@@ -1,10 +1,10 @@
 {
-  "name": "UiPath.ImageMagick.Demo",
+  "name": "ImageMagick_Demo",
   "description": "Leerer Prozess",
   "main": "Main.xaml",
   "dependencies": {
+    "ImageMagick": "[1.0.2]",
     "UiPath.Excel.Activities": "[2.8.6]",
-    "UiPath.ImageMagick": "[1.0.1]",
     "UiPath.Mail.Activities": "[1.8.6]",
     "UiPath.System.Activities": "[20.4.0]",
     "UiPath.UIAutomation.Activities": "[20.4.2]"

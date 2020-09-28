@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Demo" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1157,3220" sap2010:WorkflowViewState.IdRef="Demo_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:u="clr-namespace:UiPath_ImageMagick;assembly=UiPath.ImageMagick" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Demo" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="458,3220" sap2010:WorkflowViewState.IdRef="Demo_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:i="clr-namespace:ImageMagick;assembly=ImageMagick" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="23">
       <x:String>System.Activities</x:String>
@@ -68,7 +68,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <u:Magick out_Result="{x:Null}" sap:VirtualizedContainerService.HintSize="426,22" sap2010:WorkflowViewState.IdRef="Magick_7" ImageMagickCommand="-version" ImageMagickPath="C:\ImageMagick\" out_StandardOutput="[ImageMagickOutput]" />
+    <i:Magick out_Result="{x:Null}" sap:VirtualizedContainerService.HintSize="426,22" sap2010:WorkflowViewState.IdRef="Magick_8" ImageMagickCommand="-version" ImageMagickPath="C:\ImageMagick\" out_StandardOutput="[ImageMagickOutput]" />
     <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="426,59" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[ImageMagickOutput]" />
     <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[MyPictures]" sap:VirtualizedContainerService.HintSize="426,61" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="MyPictures" />
     <Sequence sap:VirtualizedContainerService.HintSize="426,376" sap2010:WorkflowViewState.IdRef="Sequence_2">
@@ -100,18 +100,12 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">[MyPictures +  "\Haus.jpg -normalize "+MyPictures +  "\Haus.png"]</InArgument>
         </Assign.Value>
       </Assign>
-      <u:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_1" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
+      <i:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_9" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ShowAndWait workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_9" UnSafe="False" WorkflowFileName="ShowAndWait.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ImageMagickPath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MyPictures +  &quot;\Haus.png&quot;" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">
-            <Literal x:TypeArguments="x:String">Converted to PNG!</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">[ImageMagickPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageFile" xml:space="preserve">[MyPictures +  "\Haus.png"]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">Converted to PNG!</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -129,18 +123,12 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">[MyPictures +  "\Haus.png -resize 25% "+ MyPictures +  "\Haus25.png"]</InArgument>
         </Assign.Value>
       </Assign>
-      <u:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_2" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
+      <i:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_10" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ShowAndWait workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_10" UnSafe="False" WorkflowFileName="ShowAndWait.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ImageMagickPath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MyPictures +  &quot;\Haus25.png&quot;" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">
-            <Literal x:TypeArguments="x:String">Reduced to 25% and normalized</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">[ImageMagickPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageFile" xml:space="preserve">[MyPictures +  "\Haus25.png"]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">Reduced to 25% and normalized</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -158,18 +146,12 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">[MyPictures +  "\Haus25.png -crop 400x400+640+300 -normalize "+ MyPictures +  "\Haus25crop.png"]</InArgument>
         </Assign.Value>
       </Assign>
-      <u:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_3" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
+      <i:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_11" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ShowAndWait workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_11" UnSafe="False" WorkflowFileName="ShowAndWait.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ImageMagickPath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MyPictures +  &quot;\Haus25crop.png&quot;" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">
-            <Literal x:TypeArguments="x:String">Crop small part and normalized</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">[ImageMagickPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageFile" xml:space="preserve">[MyPictures +  "\Haus25crop.png"]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">Crop small part and normalized</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -187,18 +169,12 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">["-size 320x85 canvas:none -font Arial -pointsize 72  -draw ""text 25,60 \'Magick\'"" -channel RGBA -blur 0x6 -fill darkred -stroke magenta  -draw ""text 20,55 \'Magick\'"" "+MyPictures +  "\Magick.png"]</InArgument>
         </Assign.Value>
       </Assign>
-      <u:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_4" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
+      <i:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_12" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ShowAndWait workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_12" UnSafe="False" WorkflowFileName="ShowAndWait.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ImageMagickPath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MyPictures +  &quot;\Magick.png&quot;" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">
-            <Literal x:TypeArguments="x:String">Make a Magick glowing text!</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">[ImageMagickPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageFile" xml:space="preserve">[MyPictures +  "\Magick.png"]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">Make a Magick glowing text!</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -216,18 +192,12 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">["composite -gravity south "+MyPictures +  "\Magick.png " + MyPictures +  "\Haus25crop.png "+MyPictures +  "\HausMagick.png"]</InArgument>
         </Assign.Value>
       </Assign>
-      <u:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_5" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
+      <i:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_13" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ShowAndWait workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_13" UnSafe="False" WorkflowFileName="ShowAndWait.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ImageMagickPath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MyPictures +  &quot;\HausMagick.png&quot;" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">
-            <Literal x:TypeArguments="x:String">Make a composite of crop and text!</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">[ImageMagickPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageFile" xml:space="preserve">[MyPictures +  "\HausMagick.png"]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">Make a composite of crop and text!</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
@@ -245,18 +215,12 @@
           <InArgument x:TypeArguments="x:String" xml:space="preserve">["mogrify -bordercolor white -background black +polaroid "+MyPictures +  "\HausMagick.png"]</InArgument>
         </Assign.Value>
       </Assign>
-      <u:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_6" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
+      <i:Magick out_Result="{x:Null}" out_StandardOutput="{x:Null}" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Magick_14" ImageMagickCommand="[ImageMagickCommand]" ImageMagickPath="C:\ImageMagick\" />
       <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ShowAndWait workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_14" UnSafe="False" WorkflowFileName="ShowAndWait.xaml">
         <ui:InvokeWorkflowFile.Arguments>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="ImageMagickPath" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageFile">
-            <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="MyPictures +  &quot;\HausMagick.png&quot;" />
-          </InArgument>
-          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">
-            <Literal x:TypeArguments="x:String">Make a polaroid effect as result!</Literal>
-          </InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageMagickPath">[ImageMagickPath]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageFile" xml:space="preserve">[MyPictures +  "\HausMagick.png"]</InArgument>
+          <InArgument x:TypeArguments="x:String" x:Key="ImageComment">Make a polaroid effect as result!</InArgument>
         </ui:InvokeWorkflowFile.Arguments>
       </ui:InvokeWorkflowFile>
     </Sequence>
